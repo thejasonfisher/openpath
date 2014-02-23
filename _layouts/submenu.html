@@ -72,10 +72,10 @@
 		      	</div>
 		</div>
 
-		<div class="submenu">	
+		<div class="breadcrumbs">	
 			<div class="container">
 				<ul class="nav nav-pills">
-					<li class="sitetitle">{{ site.name }}</li>
+					<li class="root">{{ site.name }}</li>
 					
 					{% for p in site.pages %}
 					<li {% if p.url == page.url %}class="active"{% endif %}><a href="{{ site.url }}{{ p.url }}">{{ p.title }}</a></li>
