@@ -3,8 +3,6 @@ title: Introduction
 layout: default
 ---
 
-## Introduction
-
 #### What is it?
 It's an automated, very simple path finding package for Unity. It's based on A* and written in UnityScript and C#. I am doing this in tandem with our Deus Ex themed game The Vongott Chronicles
 
