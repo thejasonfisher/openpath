@@ -5,3 +5,4 @@ url: "http://jeppezapp.com/openpath"
 baseurl: "http://jeppezapp.com"
 
 style: "plugin"
+header: true
