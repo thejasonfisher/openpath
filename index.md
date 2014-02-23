@@ -1,6 +1,6 @@
 ---
-title: OpenPath by Jeppe Zapp
-layout: submenu
+title: Introduction
+layout: default
 ---
 
 #### What is it?
