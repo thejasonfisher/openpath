@@ -1,6 +1,6 @@
 ---
 title: Introduction
-layout: submenu
+layout: default
 ---
 
 ## Introduction
