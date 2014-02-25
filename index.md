@@ -1,6 +1,7 @@
 ---
 title: Introduction
 layout: default
+index: 0
 ---
 
 #### What is it?
