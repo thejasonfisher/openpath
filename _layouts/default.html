@@ -9,13 +9,14 @@
 		<title>{{ site.title }}: {{ page.title }}</title>
 		
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/zapp.css" >
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/flexslider.css" >
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/zapp.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/flexslider.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/lightbox.css">
 		{% if site.style %}
-		<link rel="stylesheet" href="{{ site.url }}/css/{{ site.style }}.css" >
+		<link rel="stylesheet" href="{{ site.url }}/css/{{ site.style }}.css">
 		{% endif %}
 		{% if site.sharedstyle %}
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ site.sharedstyle }}.css" >
+		<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ site.sharedstyle }}.css">
 		{% endif %}
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,16 +82,17 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<script src="{{ site.url }}/js/flexslider.min.js"></script>
-		<script src="{{ site.url }}/js/fitvids.js"></script>
-		<script src="{{ site.url }}/js/app.js"></script>
+		<script src="{{ site.baseurl }}/js/lightbox-2.6.min.js"></script>
+		<script src="{{ site.baseurl }}/js/flexslider.min.js"></script>
+		<script src="{{ site.baseurl }}/js/fitvids.js"></script>
+		<script src="{{ site.baseurl }}/js/app.js"></script>
 
 		{% if site.header %}
 		{% include header.html %}
 		{% endif %}
 			
 		<div class="container">
-			{% if site.postlist %}
+			{% if page.date or page.postlist %}
 			<div class="postlist">
 				{% for post in site.posts %}
 				<h6>{{ post.date | date_to_string }}</h6>
@@ -99,9 +101,33 @@
 			</div>
 			{% endif %}
 
-			<div class="content">
+			<div class="content" {% if page.date or page.postlist %}style="width:80%;padding-left:30px;"{% endif %}>
+				{% if page.author %}
+				{% if page.author_url %}
+				<p>Written by <a href="{{ page.author_url }}">{{ page.author }}</a></p>
+				{% else %}
+				<p>Written by {{ page.author }}</p>
+				{% endif %}
+				{% endif %}
+				
 				{{ content }}
 			</div>
+
+			{% if page.galleries.size > 0 %}
+			{% for gallery in page.galleries %}
+			<div class="gallery">
+				<h4>{{ gallery.title }}</h4>
+
+				{% for image in gallery.images %}
+				{% if image.url %}
+				<a href="{{ image.url }}" data-lightbox="{{ gallery.title }}" {% if image.text %}title="{{ image.text }}"{% endif %}>
+					<div style="background-image:url('{{ image.url }}');"></div>
+				</a>
+				{% endif %}
+				{% endfor %}
+			</div>
+			{% endfor %}
+			{% endif %}
 
 			{% if page.carousel %}
 			<div class="flexslider">
